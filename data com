@@ -1,0 +1,338 @@
+PublicClassForm2
+PrivateSub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+If ComboBox1.Text = ""Then
+            MsgBox("Please select no of client")
+
+ElseIf ComboBox3.Text = ""Then
+            MsgBox("Please select a notification type")
+
+ElseIf ComboBox2.Text = ""Then
+            MsgBox("Please select a Security Level")
+Else
+
+            MsgBox("Simulation will begin in a moment")
+Me.Hide()
+            Form3.Timer1.Enabled = True
+Form3.Show()
+EndIf
+EndSub
+PrivateSub ExitAppToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitAppToolStripMenuItem.Click
+        MsgBox("Application is going on exit")
+MDIParent1.Enabled = True
+MDIParent1.Close()
+        Close()
+End
+EndSub
+PrivateSub UserToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserToolStripMenuItem.Click
+Me.Hide()
+        LoginForm1.Username.Text = ""
+        LoginForm1.Password.Text = ""
+LoginForm1.Show()
+EndSub
+PrivateSub Button1_MouseMove(ByVal sender AsObject, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Button1.MouseMove
+        Button1.ForeColor = Color.Red
+EndSub
+PrivateSub Form2_MouseMove(ByVal sender AsObject, ByVal e As System.Windows.Forms.MouseEventArgs) HandlesMe.MouseMove
+        Button1.ForeColor = Color.Green
+EndSub
+
+EndClass
+PublicClassForm3
+PrivateSub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+If Label2.Text = 0 Then
+            Form4.Anormaly.Enabled = True
+            Close()
+If Form2.ComboBox2.Text = "Low"Then
+                Form4.Anormaly.Interval = "5000"
+                Form4.Label11.Text = Form2.ComboBox2.Text
+
+ElseIf Form2.ComboBox2.Text = "Normal"Then
+                Form4.Anormaly.Interval = "15000"
+                Form4.Label11.Text = Form2.ComboBox2.Text
+
+ElseIf Form2.ComboBox2.Text = "High"Then
+                Form4.Anormaly.Interval = "40000"
+                Form4.Label11.Text = Form2.ComboBox2.Text
+EndIf
+
+Form4.Show()
+            Form4.progress.Enabled = True
+            Timer1.Enabled = False
+Else
+            Label2.Text = Val(Label2.Text) - 1
+
+EndIf
+EndSub
+EndClass
+PublicClassForm4
+PrivateSub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+Me.Close()
+Form1.Close()
+Form5.Close()
+Form6.Close()
+Form7.Close()
+        ProgressBar1.Value = "0"
+Form2.Show()
+EndSub
+
+PrivateSub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+If ComboBox2.Text = ""Then
+            MsgBox("Please select message type")
+
+ElseIf ComboBox1.Text = ""Then
+            MsgBox("Please select a system to receive the message")
+
+ElseIf TextBox5.Text = ""Then
+            MsgBox("Content cannot be empty, please try again!")
+'SYSTEM ONE'''''''''''''
+ElseIf ComboBox1.Text = "SYS-1"And Label3.Text = "Offline"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is now Offline")
+            Form1.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-1"And Label3.Text = "Online"Then
+            Form1.Label2.Text = TextBox5.Text
+            MsgBox("Message sent to  "& ComboBox1.Text)
+            Form1.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-1"And Label3.Text = "None"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is not ready")
+            Form1.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+SYSTEM TWO'''''''''''''
+ElseIf ComboBox1.Text = "SYS-2"And Label6.Text = "Offline"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is now Offline")
+            Form5.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-2"And Label6.Text = "Online"Then
+            Form5.Label2.Text = TextBox5.Text
+            MsgBox("Message sent to  "& ComboBox1.Text)
+            Form5.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-2"And Label6.Text = "None"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is not ready")
+            Form5.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+'SYSTEM THREE'''''''''''''
+ElseIf ComboBox1.Text = "SYS-3"And Label9.Text = "Offline"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is now Offline")
+            Form6.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-3"And Label9.Text = "Online"Then
+            Form6.Label2.Text = TextBox5.Text
+            MsgBox("Message sent to  "& ComboBox1.Text)
+            Form6.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-3"And Label9.Text = "None"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is not ready")
+            Form6.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+'SYSTEM FOUR'''''''''''''
+ElseIf ComboBox1.Text = "SYS-4"And Label12.Text = "Offline"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is now Offline")
+            Form7.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-4"And Label12.Text = "Online"Then
+            Form7.Label2.Text = TextBox5.Text
+            MsgBox("Message sent to  "& ComboBox1.Text)
+            Form7.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+ElseIf ComboBox1.Text = "SYS-4"And Label12.Text = "None"Then
+            MsgBox("Message cannot be send to  "& ComboBox1.Text + ", the system is not ready")
+            Form7.Timer1.Enabled = True
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+'ALL SYSTEM'''''''''''''
+ElseIf ComboBox1.Text = "ALL"Then
+            Form1.Label2.Text = TextBox5.Text
+            Form5.Label2.Text = TextBox5.Text
+            Form6.Label2.Text = TextBox5.Text
+            Form7.Label2.Text = TextBox5.Text
+            MsgBox("Message sent to  "& ComboBox1.Text)
+            Form1.Timer1.Enabled = True
+            Form5.Timer1.Enabled = True
+            Form6.Timer1.Enabled = True
+            Form7.Timer1.Enabled = True
+
+            TextBox5.Text = ""
+            ComboBox1.Text = ""
+Else
+EndIf
+        ListBox1.Items.Add(Me.Text & ComboBox2.Text + "    to      "& ComboBox1.Text + "       " + TimeOfDay)
+
+EndSub
+PrivateSub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles systemone.Tick
+If Label3.Text = "Online"Then
+            Label20.Text = Val(Label20.Text) + 1 &"s"
+            Form1.ComboBox1.Text = "Connect"
+
+
+If Label20.Text = "60s"Then
+                Label21.Text = Val(Label21.Text) + 1 &"m/"
+                Label20.Text = "0"
+EndIf
+ElseIf Label3.Text = "Offline"Then
+            Label20.Text = "0s"
+            Label21.Text = "0m"
+            Form1.ComboBox1.Text = "Disconnect"
+EndIf
+EndSub
+PrivateSub Label15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label15.Click
+EndSub
+PrivateSub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        OpenFileDialog1.ShowDialog()
+        TextBox5.Text = OpenFileDialog1.FileName
+EndSub
+PrivateSub ComboBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox2.SelectedIndexChanged
+If ComboBox2.Text = "Text"Then
+            Button2.Visible = False
+ElseIf ComboBox2.Text = "File"Then
+            Button2.Visible = True
+EndIf
+EndSub
+
+PrivateSub progress_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles progress.Tick
+If ProgressBar1.Value = "99"And Form2.ComboBox1.Text = "1"Then
+Form1.Text = Form1.Text + "-192.168.0.1"
+Form5.Text = Form5.Text + "-192.168.0.2"
+Form6.Text = Form6.Text + "-192.168.0.3"
+Form7.Text = Form7.Text + "-192.168.0.4"
+Form1.Show()
+            Button8.ForeColor = Color.Red
+            Button8.Text = "Turn off"
+            progress.Enabled = False
+            sys1.Visible = True
+            Label3.Visible = True
+            Label4.Visible = True
+            Label21.Visible = True
+            Label20.Visible = True
+            sys2.Visible = False
+            Label6.Visible = False
+            Label7.Visible = False
+            Label24.Visible = False
+            Label25.Visible = False
+            sys3.Visible = False
+            Label9.Visible = False
+            Label10.Visible = False
+            Label26.Visible = False
+            Label27.Visible = False
+            sys4.Visible = False
+            Label12.Visible = False
+            Label13.Visible = False
+            Label28.Visible = False
+            Label29.Visible = False
+ElseIf ProgressBar1.Value = "99"And Form2.ComboBox1.Text = "2"Then
+Form1.Text = Form1.Text + "-192.168.0.1"
+Form5.Text = Form5.Text + "-192.168.0.2"
+Form6.Text = Form6.Text + "-192.168.0.3"
+Form7.Text = Form7.Text + "-192.168.0.4"
+Form1.Show()
+Form5.Show()
+            Button8.ForeColor = Color.Red
+            Button8.Text = "Turn off"
+            progress.Enabled = False
+            sys1.Visible = True
+            Label3.Visible = True
+            Label4.Visible = True
+            Label21.Visible = True
+            Label20.Visible = True
+            sys2.Visible = True
+            Label6.Visible = True
+            Label7.Visible = True
+            Label24.Visible = True
+            Label25.Visible = True
+            sys3.Visible = False
+            Label9.Visible = False
+            Label10.Visible = False
+            Label26.Visible = False
+            Label27.Visible = False
+            sys4.Visible = False
+            Label12.Visible = False
+            Label13.Visible = False
+            Label28.Visible = False
+            Label29.Visible = False
+ElseIf ProgressBar1.Value = "99"And Form2.ComboBox1.Text = "3"Then
+Form1.Text = Form1.Text + "-192.168.0.1"
+Form5.Text = Form5.Text + "-192.168.0.2"
+Form6.Text = Form6.Text + "-192.168.0.3"
+Form7.Text = Form7.Text + "-192.168.0.4"
+Form1.Show()
+Form5.Show()
+Form6.Show()
+
+            Button8.ForeColor = Color.Red
+            Button8.Text = "Turn off"
+            progress.Enabled = False
+            sys1.Visible = True
+            Label3.Visible = True
+            Label4.Visible = True
+            Label21.Visible = True
+            Label20.Visible = True
+            sys2.Visible = True
+            Label6.Visible = True
+            Label7.Visible = True
+            Label24.Visible = True
+            Label25.Visible = True
+            sys3.Visible = True
+            Label9.Visible = True
+            Label10.Visible = True
+            Label26.Visible = True
+            Label27.Visible = True
+            sys4.Visible = False
+            Label12.Visible = False
+            Label13.Visible = False
+            Label28.Visible = False
+            Label29.Visible = False
+ElseIf ProgressBar1.Value = "99"And Form2.ComboBox1.Text = "4"Then
+
+
+Form1.Text = Form1.Text + "-192.168.0.1"
+Form5.Text = Form5.Text + "-192.168.0.2"
+Form6.Text = Form6.Text + "-192.168.0.3"
+Form7.Text = Form7.Text + "-192.168.0.4"
+
+Form1.Show()
+Form5.Show()
+Form6.Show()
+Form7.Show()
+            Button8.ForeColor = Color.Red
+            Button8.Text = "Turn off"
+            progress.Enabled = False
+            sys1.Visible = True
+            Label3.Visible = True
+            Label4.Visible = True
+            Label21.Visible = True
+            Label20.Visible = True
+            sys2.Visible = True
+            Label6.Visible = True
+            Label7.Visible = True
+            Label24.Visible = True
+            Label25.Visible = True
+            sys3.Visible = True
+            Label9.Visible = True
+            Label10.Visible = True
+            Label26.Visible = True
+            Label27.Visible = True
+            sys4.Visible = True
+            Label12.Visible = True
+            Label13.Visible = True
+            Label28.Visible = True
+            Label29.Visible = True
+Else
+            Button8.ForeColor = Color.Green
+            Button8.Text = "Loding Client..."
+            ProgressBar1.Value = ProgressBar1.Value + 1
+EndIf
+
+EndSub
+
